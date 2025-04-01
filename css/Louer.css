@@ -1,0 +1,85 @@
+body {
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #ffffff;
+    font-family: 'Arial', sans-serif;
+}
+
+h2 {
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.card {
+    border-radius: 12px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.3);
+}
+
+.card-img-top {
+    height: 250px; /* Agrandir l'image */
+    object-fit: cover;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.larger-card {
+    height: 100%;
+}
+
+.trotinette-img, .skateboard-img {
+    height: 300px;
+}
+
+.price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #00ffcc;
+}
+
+.card-text {
+    color: #00bcd4 !important; 
+    font-weight: bold;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.container {
+    padding: 20px;
+}
+.btn-secondary {
+    background-color: #6c757d;
+    border: 2px solid #adb5bd;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.btn-secondary:hover {
+    background-color: #495057;
+    border-color: #6c757d;
+    color: #e9ecef;
+}
+
+.btn-secondary {
+    display: block;
+    margin: 20px auto; 
+    text-align: center;
+}

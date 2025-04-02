@@ -8,6 +8,17 @@ function openForm() {
     modalContent.innerHTML = `
         <h3>Formulaire de réservation</h3>
         <form id="reservationForm">
+
+            <label for="vehicule">Véhicule</label>
+            <select id="vehicule" required>
+                <option value="">-- Choisissez un véhicule --</option>
+                <option value="Trottinette électrique">Trottinette électrique</option>
+                <option value="Vélo de montagne">Vélo de montagne</option>
+                <option value="Skateboard">Skateboard</option>
+            </select>
+
+            <br><br>
+
             <label for="nom">Nom</label>
             <input type="text" id="nom" required>
 

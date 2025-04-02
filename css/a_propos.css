@@ -5,9 +5,9 @@ body {
     background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
     color: white;
     scroll-behavior: smooth;
-  }
-  
-  header {
+}
+
+header {
     background: rgba(200, 200, 200, 0.2);
     backdrop-filter: blur(10px);
     color: white;
@@ -15,85 +15,105 @@ body {
     text-align: center;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     animation: fadeInDown 1s ease-out;
-  }
-  
-  .logo {
+}
+
+.logo {
     width: 100px;
     height: auto;
-    transition: transform 0.3s ease;
-  }
-  .logo:hover {
+    transition: transform 0.3s;
+}
+.logo:hover {
     transform: scale(1.1);
-  }
-  
-  .animated-title {
+}
+
+.animated-title {
     font-size: 2.5rem;
     margin: 0;
     color: #00ffcc;
-    text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+    text-shadow: 0 0 10px rgba(0,255,204,0.5);
     transition: text-shadow 0.3s ease;
-  }
-  .animated-title:hover {
-    text-shadow: 0 0 20px rgba(0, 255, 204, 0.9);
-  }
-  
-  nav {
+}
+.animated-title:hover {
+    text-shadow: 0 0 20px rgba(0,255,204,0.9);
+}
+
+nav {
     background: rgba(15, 32, 39, 0.8);
     backdrop-filter: blur(10px);
     text-align: center;
     padding: 1rem 0;
     animation: fadeIn 1s ease;
-  }
-  
-  nav a {
+}
+
+nav a {
     color: #00ffcc;
     text-decoration: none;
     font-weight: bold;
     margin: 0 15px;
     transition: all 0.3s ease;
-  }
-  
-  nav a:hover {
+}
+
+nav a:hover {
     color: #00bcd4;
     text-shadow: 0 0 8px #00bcd4;
-  }
-  
-  main {
+}
+
+main {
     padding: 2rem;
-  }
-  
-  .container {
-    max-width: 1200px;
+    animation: fadeInUp 1.2s ease;
+}
+
+.container {
+    max-width: 1000px;
     margin: 0 auto;
-  }
-  
-  .card {
-    background: rgba(200, 200, 200, 0.2);
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
-    color: white;
     padding: 1.5rem;
-    margin: 1rem 0;
-    border-radius: 12px;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    margin: 1.5rem 0;
+    border-radius: 15px;
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .card:hover {
+}
+
+.card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 0 25px rgba(0, 255, 204, 0.3);
-  }
-  
-  .card h2 {
+    box-shadow: 0 0 30px rgba(0, 255, 204, 0.3);
+}
+
+.card h2 {
     color: #00ffcc;
-  }
-  
-  .card ul {
+}
+
+.card ul {
     list-style-type: disc;
     padding-left: 20px;
     color: #00ffcc;
-  }
-  
-  footer {
+}
+
+.team-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+    justify-content: center;
+}
+
+.team-list span {
+    background-color: rgba(0, 255, 204, 0.1);
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: 1px solid #00ffcc;
+    transition: background-color 0.3s ease;
+}
+
+.team-list span:hover {
+    background-color: rgba(0, 255, 204, 0.2);
+}
+
+footer {
     background: rgba(200, 200, 200, 0.2);
     backdrop-filter: blur(10px);
     color: white;
@@ -103,9 +123,9 @@ body {
     width: 100%;
     bottom: 0;
     border-top: 1px solid rgba(255, 255, 255, 0.2);
-  }
-  
-  .btn-secondary {
+}
+
+.btn-secondary {
     background-color: #6c757d;
     border: 2px solid #adb5bd;
     color: white;
@@ -114,32 +134,40 @@ body {
     border-radius: 5px;
     display: inline-block;
     margin: 0 10px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-  }
-  
-  .btn-secondary:hover {
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-secondary:hover {
     background-color: #495057;
     border-color: #6c757d;
     color: #e9ecef;
     transform: scale(1.05);
-  }
-  
-  .fade-in-up {
-    animation: fadeInUp 0.8s ease;
-  }
-  
-  /* Animations */
-  @keyframes fadeInDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  
-  @keyframes fadeIn {
+}
+
+/* Animations */
+@keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
-  }
-  
-  @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

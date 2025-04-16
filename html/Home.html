@@ -13,9 +13,18 @@
     <p>Location de matériel sportif</p>
   </header>
 
+  <!-- ✅ Icône utilisateur en haut à droite -->
+  <div id="user-box" style="position: absolute; top: 20px; right: 20px;">
+    <button id="userIcon" style="background: none; border: none; font-size: 1.8rem; cursor: pointer;">👤</button>
+    <div id="userInfo" style="display: none; background-color: #2c5364; color: white; padding: 10px; border-radius: 10px; position: absolute; top: 35px; right: 0; box-shadow: 0 0 10px rgba(0,0,0,0.2);">
+      <!-- Email affiché dynamiquement ici -->
+    </div>
+  </div>
+
   <nav>
     <a href="Louer.html" class="btn btn-secondary">Louer de l'équipement</a>
     <a href="a_propos.html" class="btn btn-secondary">À propos de nous</a>
+    <a href="login.html" class="btn btn-secondary">Login</a>
   </nav>
 
   <main class="container fade-in-up">
@@ -27,9 +36,8 @@
     <section class="card">
       <h2>Nos services</h2>
       <ul>
-        <li>Location de vélos</li>
-        <li>Location de trottinettes électriques</li>
-        <li>Location de skateboards</li>
+        <li>Location de véhicules</li>
+        <li>Mettre un véhicule à disposition</li>
       </ul>
     </section>
 
@@ -42,5 +50,8 @@
   <footer>
     <p>&copy; 2025 La Bonne Loc. Tous droits réservés.</p>
   </footer>
+
+  <!-- ✅ Script JS -->
+  <script src="../js/home.js"></script>
 </body>
 </html>

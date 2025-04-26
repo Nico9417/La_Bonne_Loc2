@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Créer un compte - La Bonne Loc</title>
+  <link rel="stylesheet" href="../css/register.css">
+</head>
+<body>
+  <div class="container fade-in-up">
+    <h2 class="title">Créer un compte</h2>
+    <form id="registerForm" class="form-card">
+      <input type="text" name="nom" placeholder="Nom" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="password" name="mot_de_passe" placeholder="Mot de passe" required>
+      <select name="role" required>
+        <option value="client">Client</option>
+        <option value="loueur">Loueur</option>
+      </select>
+      <button type="submit" class="btn-primary">Créer le compte</button>
+    </form>
+    <div id="registerMessage" class="text-center mt-3"></div>
+  </div>
+
+  <script src="../js/register.js"></script>
+</body>
+</html>

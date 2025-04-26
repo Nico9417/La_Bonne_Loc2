@@ -1,0 +1,84 @@
+body {
+    margin: 0;
+    font-family: 'Orbitron', sans-serif;
+    background: linear-gradient(135deg, #1e2a36, #2d3e50);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .container {
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  h2 {
+    font-size: 3rem;
+    color: #ffffff;
+    margin-bottom: 2rem;
+  }
+  
+  .login-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    padding: 3rem;
+    width: 400px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .login-card input {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 15px;
+    padding: 1rem;
+    color: #fff;
+    font-size: 1rem;
+  }
+  
+  .login-card input::placeholder {
+    color: #bbb;
+  }
+  
+  .login-card button {
+    background: linear-gradient(90deg, #66ffcc, #66ccff);
+    border: none;
+    border-radius: 15px;
+    padding: 1rem;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .login-card button:hover {
+    transform: scale(1.05);
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .new-user-btn {
+    margin-top: 2rem;
+    background: transparent;
+    border: 2px solid #66ccff;
+    color: #66ccff;
+    padding: 0.8rem 1.5rem;
+    border-radius: 15px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .new-user-btn:hover {
+    background: #66ccff;
+    color: #1e2a36;
+    transform: scale(1.05);
+  }

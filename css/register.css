@@ -1,0 +1,98 @@
+body {
+    background: linear-gradient(135deg, #1f2c3a, #2a4459);
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    width: 420px;
+  }
+  
+  h2 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    color: white;
+    text-shadow: 0 0 5px #00fff7, 0 0 10px #00c3ff;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  input, select {
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    font-size: 1em;
+    outline: none;
+  }
+  
+  input::placeholder, select {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  button {
+    margin-top: 10px;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #00ffb8, #00c3ff);
+    color: white;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  button:hover {
+    background: linear-gradient(90deg, #00c3ff, #00ffb8);
+  }
+  
+  #registerMessage {
+    margin-top: 15px;
+    color: white;
+    font-size: 1em;
+  }
+
+  /* Animation apparition douce */
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Animation hover sur les inputs */
+  input:hover, select:hover {
+    background: rgba(255, 255, 255, 0.25);
+  }
+  
+  /* Animation focus sur les inputs */
+  input:focus, select:focus {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.02);
+    box-shadow: 0 0 8px #00fff7, 0 0 12px #00c3ff;
+  }
+  
+  /* Animation bouton au clic */
+  button:active {
+    transform: scale(0.98);
+  }

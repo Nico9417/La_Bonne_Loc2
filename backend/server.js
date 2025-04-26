@@ -216,6 +216,60 @@ app.post('/verifier-utilisateur', async (req, res) => {
   }
 });
 
+// 🛑 Supprimer un véhicule
+app.delete("/vehicules/:id", async (req, res) => {
+  try {
+    const vehiculeId = req.params.id;
+
+    // Vérifier que le véhicule est disponible avant suppression
+    const vehicule = await Vehicule.findByPk(vehiculeId);
+
+    if (!vehicule) {
+      return res.status(404).json({ success: false, message: "Véhicule introuvable." });
+    }
+
+    if (!vehicule.disponible) {
+      return res.status(400).json({ success: false, message: "Véhicule déjà réservé, impossible de supprimer." });
+    }
+
+    await vehicule.destroy();
+
+    res.json({ success: true, message: "Véhicule supprimé avec succès." });
+  } catch (err) {
+    console.error("Erreur suppression véhicule :", err);
+    res.status(500).json({ success: false, message: "Erreur serveur." });
+  }
+});
+
+// 🚀 Route pour inscription
+app.post("/register", async (req, res) => {
+  const { nom, email, mot_de_passe, role } = req.body;
+
+  if (!nom || !email || !mot_de_passe || !role) {
+    return res.status(400).json({ success: false, message: "Tous les champs sont requis." });
+  }
+
+  try {
+    const utilisateurExist = await Utilisateur.findOne({ where: { email } });
+
+    if (utilisateurExist) {
+      return res.status(400).json({ success: false, message: "Email déjà utilisé." });
+    }
+
+    const nouvelUtilisateur = await Utilisateur.create({
+      nom,
+      email,
+      mot_de_passe,
+      role
+    });
+
+    res.json({ success: true, message: "Utilisateur créé avec succès.", user: nouvelUtilisateur });
+  } catch (err) {
+    console.error("Erreur création utilisateur :", err);
+    res.status(500).json({ success: false, message: "Erreur serveur." });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`✅ Serveur backend démarré sur http://localhost:${PORT}`);
 });

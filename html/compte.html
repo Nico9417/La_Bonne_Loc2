@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mon Compte</title>
+  <!-- Ajout de FontAwesome pour les étoiles -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="../css/compte.css" />
 </head>
 <body>
@@ -24,8 +26,30 @@
 
     <h2 class="section-title">Mes réservations</h2>
     <div id="mesReservations" class="vehicule-grid"></div>
+
+    <!-- 🔥 Ajouté pour corriger ton problème -->
+    <h2 class="section-title">Mes avis laissés</h2>
+    <div id="mesAvisLaisses" class="vehicule-grid"></div>
+
+    <h2 class="section-title">Avis reçus sur mes véhicules</h2>
+    <div id="mesAvisRecus" class="vehicule-grid"></div>
   </div>
 
   <script src="../js/compte.js"></script>
+
+  <!-- Popup pour donner un avis -->
+  <div id="avisPopup" class="popup-overlay" style="display: none;">
+    <div class="popup-content">
+      <h3>Laisser un avis</h3>
+      <div id="etoilesContainer">
+        <!-- étoiles dynamiques -->
+      </div>
+      <textarea id="commentaire" placeholder="Votre commentaire..." rows="4"></textarea>
+      <div class="popup-buttons">
+        <button onclick="envoyerAvis()">Envoyer</button>
+        <button onclick="fermerPopupAvis()">Annuler</button>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

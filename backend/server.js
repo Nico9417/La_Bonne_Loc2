@@ -45,7 +45,9 @@ const Reservation = sequelize.define('reservation', {
     defaultValue: Sequelize.NOW
   },
   date_debut: DataTypes.DATE,
-  duree_heures: DataTypes.INTEGER
+  duree_heures: DataTypes.INTEGER,
+  avis_note: DataTypes.INTEGER,
+  avis_commentaire: DataTypes.STRING
 }, {
   tableName: 'reservations',
   timestamps: false
@@ -269,6 +271,120 @@ app.post("/register", async (req, res) => {
     res.status(500).json({ success: false, message: "Erreur serveur." });
   }
 });
+
+// 🛠️ À appeler dès le démarrage pour mettre à jour les véhicules
+async function majDisponibiliteVehicules() {
+  try {
+    const maintenant = new Date();
+
+    const reservations = await Reservation.findAll({
+      include: { model: Vehicule }
+    });
+
+    for (const reservation of reservations) {
+      const dateDebut = new Date(reservation.date_debut);
+      const dateFin = new Date(dateDebut.getTime() + reservation.duree_heures * 3600 * 1000);
+
+      if (dateFin < maintenant) {
+        const vehicule = await Vehicule.findByPk(reservation.vehicule_id);
+        
+        if (vehicule && vehicule.disponible === false) {
+          vehicule.disponible = true;
+          await vehicule.save();
+          console.log(`✅ Véhicule ${vehicule.nom} est à nouveau disponible.`);
+        }
+      }
+    }
+  } catch (err) {
+    console.error("Erreur mise à jour véhicules :", err);
+  }
+}
+
+sequelize.sync()
+  .then(async () => {
+    await majDisponibiliteVehicules(); // ✅ update véhicules au bon moment
+  })
+  .catch(err => {
+    console.error("Erreur synchronisation base :", err);
+  });
+
+// Route pour un avis
+app.post("/avis", async (req, res) => {
+  const { reservationId, note, commentaire } = req.body;
+
+  if (!req.session.user) {
+    return res.status(401).json({ success: false, message: "Non connecté" });
+  }
+
+  try {
+    const reservation = await Reservation.findByPk(reservationId);
+
+    if (!reservation) {
+      return res.status(404).json({ success: false, message: "Réservation introuvable" });
+    }
+
+    reservation.avis_note = note;
+    reservation.avis_commentaire = commentaire;
+    await reservation.save();
+
+    res.json({ success: true, message: "Avis enregistré avec succès." });
+  } catch (err) {
+    console.error("Erreur enregistrement avis :", err);
+    res.status(500).json({ success: false, message: "Erreur serveur" });
+  }
+});
+
+// 🛑 Nouvelle route pour récupérer mes avis laissés
+app.get('/mes-avis', async (req, res) => {
+  if (!req.session.user) {
+    return res.status(401).json({ success: false, message: "Non connecté" });
+  }
+
+  try {
+    const reservationsAvecAvis = await Reservation.findAll({
+      where: {
+        utilisateur_id: req.session.user.id,
+        avis_note: { [Sequelize.Op.not]: null },
+        avis_commentaire: { [Sequelize.Op.not]: null }
+      },
+      include: [{
+        model: Vehicule,
+        attributes: ['nom', 'image_url']
+      }]
+    });
+
+    res.json(reservationsAvecAvis);
+  } catch (error) {
+    console.error("Erreur récupération avis :", error);
+    res.status(500).json({ success: false, message: "Erreur serveur", error });
+  }
+});
+
+app.get('/avis-recus', async (req, res) => {
+  if (!req.session.user) {
+    return res.status(401).json({ success: false, message: "Non connecté" });
+  }
+
+  try {
+    const reservationsAvecAvis = await Reservation.findAll({
+      where: {
+        avis_note: { [Sequelize.Op.not]: null },
+        avis_commentaire: { [Sequelize.Op.not]: null }
+      },
+      include: [{
+        model: Vehicule,
+        attributes: ['nom', 'image_url'],
+        where: { loueur_id: req.session.user.id }
+      }]
+    });
+
+    res.json(reservationsAvecAvis);
+  } catch (error) {
+    console.error("Erreur récupération avis reçus :", error);
+    res.status(500).json({ success: false, message: "Erreur serveur", error });
+  }
+});
+
 
 app.listen(PORT, () => {
   console.log(`✅ Serveur backend démarré sur http://localhost:${PORT}`);

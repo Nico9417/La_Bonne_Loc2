@@ -131,3 +131,146 @@ body {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
+
+  .avis-button {
+    background: linear-gradient(to right, #4facfe, #00f2fe);
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    font-size: 1rem;
+  }
+  
+  .avis-button:hover {
+    background: linear-gradient(to right, #43e97b, #38f9d7);
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+  }
+
+  .popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+  }
+  
+  .popup-content {
+    background: #2c3e50;
+    padding: 20px 30px;
+    border-radius: 15px;
+    text-align: center;
+    color: white;
+    box-shadow: 0px 0px 15px rgba(0,255,255,0.3);
+    animation: popupAppear 0.3s ease forwards;
+  }
+  
+  @keyframes popupAppear {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+  
+  #etoilesContainer {
+    margin: 10px 0;
+  }
+  
+  #etoilesContainer i {
+    font-size: 2rem;
+    margin: 5px;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  
+  #etoilesContainer i:hover,
+  #etoilesContainer i.active {
+    color: gold;
+  }
+  
+  textarea {
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding: 10px;
+    background: #34495e;
+    color: white;
+    border: none;
+  }
+  
+  .popup-buttons button {
+    margin: 10px;
+    padding: 8px 15px;
+    border-radius: 10px;
+    background: linear-gradient(45deg, #43e97b, #38f9d7);
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .popup-buttons button:hover {
+    transform: scale(1.05);
+  }
+
+  /* Styles plus stylés pour les étoiles */
+#etoilesContainer {
+  margin: 10px 0;
+  display: flex;
+  justify-content: center;
+}
+
+#etoilesContainer i {
+  font-size: 2.5rem;
+  margin: 0 8px;
+  cursor: pointer;
+  transition: color 0.3s, transform 0.3s;
+  color: #aaa;
+}
+
+#etoilesContainer i:hover {
+  transform: scale(1.3);
+  background: linear-gradient(45deg, #f9d423, #ff4e50);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#etoilesContainer i.active {
+  color: gold;
+  transform: scale(1.2);
+}
+
+.avis {
+  margin-top: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 10px;
+  border-radius: 10px;
+  animation: fadeIn 0.6s ease;
+}
+
+.etoiles {
+  color: gold;
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  animation: fadeIn 0.6s ease;
+}
+
+.commentaire {
+  color: #ccc;
+  font-size: 0.9rem;
+  margin-top: 5px;
+  animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px);}
+  to { opacity: 1; transform: translateY(0);}
+}
